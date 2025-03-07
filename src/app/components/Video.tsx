@@ -52,7 +52,7 @@ const LoadingMessage = () => (
         />
         <span className="mr-[5px] text-[22px] font-bold text-[#d0190d]">
           IMPORTANT:
-        </span>{' '}
+        </span>
         <span className="align-middle text-black">
           Your video may take 10 seconds to load. Make sure your sound is on.
         </span>
@@ -87,9 +87,9 @@ const DoctorInfo = () => (
       </b>
       . Over her 20-year career, Dr. Sam has specialized in treating digestive
       and metabolic disorders, founding the Institute of Gastrointestinal
-      Motility Disorders and Integrative Health in New York City.{' '}
+      Motility Disorders and Integrative Health in New York City.
       <em>
-        Dr. Sam's research has positioned her at the forefront of understanding{' '}
+        Dr. Sam&apos;s research has positioned her at the forefront of understanding
         <b>obesity, fatigue and other metabolic dysfunctions.</b>
       </em>
     </p>
