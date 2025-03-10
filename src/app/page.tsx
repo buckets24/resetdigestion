@@ -15,13 +15,13 @@ export default function Home() {
       /> */}
       <Script
         src="https://www.googletagmanager.com/gtag/js?id=UA-122527750-1"
-        strategy="afterInteractive"
+        strategy="beforeInteractive"
       />
       <Script
         src="https://gtmsvr.konsciousketo.com/gtm.js?id=GTM-56TX85F"
-        strategy="afterInteractive"
+        strategy="beforeInteractive"
       />
-      <Script id="google-analytics" strategy="afterInteractive">
+      <Script id="google-analytics" strategy="beforeInteractive">
         {`
           window.dataLayer = window.dataLayer || [];
           function gtag() {
