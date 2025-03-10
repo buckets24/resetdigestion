@@ -1,12 +1,10 @@
 import Script from 'next/script'
 import { VSLProvider } from './context/VSLContext'
 import Headline from './components/Headline'
+import Video from './components/Video'
 import BeforeDrop from './components/ViewWrapper/BeforeDrop'
+import Comments from './components/Comments'
 import { COMMENTS } from './config/comments.config'
-import dynamic from 'next/dynamic'
-
-const Video = dynamic(() => import('./components/Video'), { ssr: true });
-const Comments = dynamic(() => import('./components/Comments'), { ssr: true });
 
 export default function Home() {
   return (
