@@ -5,8 +5,8 @@ import BeforeDrop from './components/ViewWrapper/BeforeDrop'
 import { COMMENTS } from './config/comments.config'
 import dynamic from 'next/dynamic'
 
-const Video = dynamic(() => import('./components/Video'), { ssr: false });
-const Comments = dynamic(() => import('./components/Comments'), { ssr: false });
+const Video = dynamic(() => import('./components/Video'), { ssr: true });
+const Comments = dynamic(() => import('./components/Comments'), { ssr: true });
 
 export default function Home() {
   return (
