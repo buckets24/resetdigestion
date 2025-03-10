@@ -9,10 +9,10 @@ import { COMMENTS } from './config/comments.config'
 export default function Home() {
   return (
     <>
-      <Script
+      {/* <Script
         src="https://fast.wistia.com/assets/external/E-v1.js"
         strategy="worker"
-      />
+      /> */}
       <Script
         src="https://www.googletagmanager.com/gtag/js?id=UA-122527750-1"
         strategy="beforeInteractive"
