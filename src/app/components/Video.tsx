@@ -11,10 +11,28 @@ interface WistiaOptions {
   fullscreenButton?: boolean
 }
 
+interface WistiaQueue {
+  id: string
+  options: WistiaOptions
+  onReady: (video: WistiaVideo) => void
+}
+
+interface WindowWithWistia extends Window {
+  _wq?: WistiaQueue[]
+}
+
 interface VideoProps {
   videoId: string
   timerSeconds: number
   options: WistiaOptions
+}
+
+interface WistiaVideo {
+  aspect: () => number
+  width: (width: number, options: { constrain: boolean }) => void
+  state: () => string
+  bind: (event: string, callback: (...args: unknown[]) => void) => WistiaVideo
+  unbind: (event: string, callback: (...args: unknown[]) => void) => void
 }
 
 // Components
@@ -87,10 +105,10 @@ const DoctorInfo = () => (
 )
 
 // Utilities
-const createDebounce = (wait: number) => {
+const createDebounce = <T extends (...args: unknown[]) => void>(wait: number) => {
   let timeout: NodeJS.Timeout
-  return (func: (...args: any[]) => void) => {
-    return (...args: any[]) => {
+  return (func: T) => {
+    return (...args: Parameters<T>) => {
       clearTimeout(timeout)
       timeout = setTimeout(() => func(...args), wait)
     }
@@ -140,7 +158,7 @@ const Video = ({ videoId, timerSeconds, options }: VideoProps) => {
       if (event.ctrlKey && event.key === 'b') setButtonDrop(true)
     }
 
-    const initializeWistia = (video: any) => {
+    const initializeWistia = (video: WistiaVideo) => {
       const debouncedResize = createDebounce(300)
       const videoContainer = document.querySelector(
         '.video-container'
@@ -169,9 +187,9 @@ const Video = ({ videoId, timerSeconds, options }: VideoProps) => {
         window.addEventListener('resize', handleVideoResize)
         video.bind('widthchange', handleVideoResize)
       }
-
       video
-        .bind('secondchange', (seconds: number) => {
+        .bind('secondchange', (...args: unknown[]) => {
+          const seconds = args[0] as number
           if (seconds === timerSeconds) setButtonDrop(true)
         })
         .bind('play', () => {
@@ -198,8 +216,10 @@ const Video = ({ videoId, timerSeconds, options }: VideoProps) => {
 
     scriptTag.onload = () => {
       if (window.location.hash === '#videobar') options.playbar = true
-      ;(window as any)._wq = (window as any)._wq || []
-      ;(window as any)._wq.push({
+      
+      const windowWithWistia = window as WindowWithWistia
+      windowWithWistia._wq = windowWithWistia._wq || []
+      windowWithWistia._wq.push({
         id: videoId,
         options,
         onReady: initializeWistia
