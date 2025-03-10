@@ -1,6 +1,11 @@
 import Script from 'next/script'
+import { VSLProvider } from './context/VSLContext'
 import Headline from './components/Headline'
 import Video from './components/Video'
+import BeforeDrop from './components/ViewWrapper/BeforeDrop'
+import Comments from './components/Comments'
+import { COMMENTS } from './config/comments.config'
+
 export default function Home() {
   return (
     <>
@@ -28,8 +33,30 @@ export default function Home() {
           gtag('config', 'AW-11038484286');
         `}
       </Script>
-      <Headline />
-      <Video />
+      <VSLProvider>
+        <Headline />
+        <Video
+          videoId="2dv7bb0ic0"
+          timerSeconds={60}
+          options={{
+            autoPlay: false,
+            playbar: false,
+            volumeControl: false,
+            smallPlayButton: false,
+            fullscreenButton: false
+          }}
+        />
+        <BeforeDrop>
+          <div
+            data-id="beforedrop-container"
+            className="w-full overflow-hidden"
+          >
+            <div className="max-w-[1140px] m-auto">
+              <Comments items={COMMENTS} />
+            </div>
+          </div>
+        </BeforeDrop>
+      </VSLProvider>
     </>
   )
 }
