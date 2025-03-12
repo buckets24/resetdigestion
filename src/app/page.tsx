@@ -43,20 +43,14 @@ export default function Home() {
       </Script>
       <Script
         src="https://polaris.truevaultcdn.com/static/polaris.js"
-        strategy="worker"
-        type="text/partytown"
-      />
-      <Script 
-        id="polaris-options" 
-        strategy="worker"
-        type="text/partytown"
+        strategy="lazyOnload"
       >
         {`
-          window.polarisOptions = {
+          window && (window.polarisOptions = {
             GoogleAnalyticsTrackingId: "G-381562022",
             enableConsentManager: true,
             privacyCenterId: "2WDWRB6YE",
-          };
+          });
         `}
       </Script>
       <VSLProvider>
