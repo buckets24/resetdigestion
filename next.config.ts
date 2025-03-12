@@ -6,6 +6,9 @@ const nextConfig: NextConfig = {
     remotePatterns: [
       {
         hostname: 'resetdigestion.com'
+      },
+      {
+        hostname: 'emmarelief.com'
       }
     ]
   },
