@@ -1,11 +1,16 @@
 import Script from 'next/script'
+import dynamic from 'next/dynamic'
 import { VSLProvider } from './context/VSLContext'
 import Headline from './components/Headline'
-import Video from './components/Video'
 import BeforeDrop from './components/ViewWrapper/BeforeDrop'
 import Comments from './components/Comments'
 import { COMMENTS } from './config/comments.config'
 import Footer from './components/Footer'
+import { Suspense } from 'react'
+
+const Video = dynamic(() => import('./components/Video'), {
+  loading: () => <div>Loading...</div>,
+})
 
 export default function Home() {
   return (
@@ -37,17 +42,19 @@ export default function Home() {
       <VSLProvider>
         <div className="bg-[#f7f6f4] w-full">
           <Headline />
-          <Video
-            videoId="2dv7bb0ic0"
-            timerSeconds={60}
-            options={{
-              autoPlay: false,
-              playbar: false,
-              volumeControl: false,
-              smallPlayButton: false,
-              fullscreenButton: false
-            }}
+          <Suspense fallback={<div>Loading...</div>}>
+            <Video
+              videoId="2dv7bb0ic0"
+              timerSeconds={60}
+              options={{
+                autoPlay: false,
+                playbar: false,
+                volumeControl: false,
+                smallPlayButton: false,
+                fullscreenButton: false
+              }}
           />
+          </Suspense>
           <BeforeDrop>
             <div
               data-id="beforedrop-container"

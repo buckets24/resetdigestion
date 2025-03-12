@@ -19,8 +19,8 @@ const Overline = ({ text }: { text: string }) => {
 
 const Headline = () => {
   return (
-    <div className="m-auto max-w-[1440px] pt-4" id="heading">
-      <div className="topdoctordiv m-auto px-0 py-4 md:px-3" id="topdoctordiv">
+    <div className="m-auto max-w-[1440px] pt-[24px]" id="heading">
+      <div className="topdoctordiv m-auto px-0 py-[24px] md:px-3" id="topdoctordiv">
         <div className="block text-center">
           <Overline text="Top NYC Gut Doctor:" />
           <MainHeadline text="“Do This Once A Day To Empty Your Bowels Like Clockwork...”" />
