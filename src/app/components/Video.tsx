@@ -1,5 +1,6 @@
 'use client'
 import { useEffect, useCallback } from 'react'
+import Image from 'next/image'
 import { useVSL } from '../context/VSLContext'
 
 // Types
@@ -52,10 +53,14 @@ const LoadingMessage = () => (
   <div className="beforedrop hideonplay hidden w-full px-[16px] md:block md:px-0 md:pt-[25px]">
     <div className="text-[20px]">
       <p className="inline-flex max-w-[776px] items-center text-center font-semibold md:m-auto">
-        <img
+        <Image
           className="mr-[5px] h-[16px] w-[16px] md:h-[24px] md:w-[24px]"
           src="https://resetdigestion.com/pages/er-vslfb-v3/charm_sound.png?v=56?v=1"
           alt="Sound icon"
+          width={16}
+          height={16}
+          loading="lazy"
+          quality={50}
         />
         <span className="mr-[5px] text-[22px] font-bold text-[#d0190d]">
           IMPORTANT:
@@ -72,10 +77,14 @@ const DoctorInfo = () => (
   <div className="hideonplay beforedrop hidden w-full px-[16px] pb-[10px] md:block md:w-[204.8px] md:px-0">
     <div className="flex flex-col gap-[10px]">
       <div>
-        <img
+        <Image
           src="https://resetdigestion.com/pages/er-vslfb-v3/drginasam.png?v=56?v=1"
           className="ginaimage w-[81.96px] md:w-[147.2px]"
           alt="Dr. Gina Sam"
+          width={81.96}
+          height={147.2}
+          loading="lazy"
+          quality={50}
         />
       </div>
       <div className="flex flex-col">
@@ -270,28 +279,70 @@ const Video = ({ videoId, timerSeconds, options }: VideoProps) => {
       <div className="bg-[#ffffff] md:bg-transparent m-auto maxwidth mb-sm-0 pb-0 pt-1 mt-[8px] md:mt-[16px] md:pb-[24px] md:pt-[16px] flowheight">
         <div className="text-[20px] px-[5px] hidden showonplay">
           <p className="font-semibold max-w-[776px] md:m-auto text-center font-myriadpro">
-            <img className="h-[16px] md:h-[24px] w-[16px] md:w-[24px] mt-[6px] md:mt-[4px] me-[5px]" src="https://resetdigestion.com/pages/er-vslfb-v2/charm_sound.png" />
-            <span className="text-[#d0190d] font-bold">IMPORTANT:&nbsp;</span>
+            <Image
+              className="h-[16px] md:h-[24px] w-[16px] md:w-[24px] mt-[6px] md:mt-[4px] me-[5px]"
+              src="https://resetdigestion.com/pages/er-vslfb-v2/charm_sound.png"
+              alt="Sound icon"
+              width={16}
+              height={16}
+              loading="lazy"
+              quality={50}
+            />
             <span className="align-middle">Your video may take 10 seconds to load. Make sure your sound is on.</span>
-            <img src="https://emmarelief.com/cdn/shop/t/10/assets/greenarrowdown.png?v=90230465467182572741687505008" className="garrow afterdrop d-none m-auto mt-2 mt-sm-4" style={{ width: '39px' }} />
+            <Image
+              src="https://emmarelief.com/cdn/shop/t/10/assets/greenarrowdown.png?v=90230465467182572741687505008"
+              className="garrow afterdrop d-none m-auto mt-2 mt-sm-4"
+              style={{ width: '39px' }}
+              alt="Green arrow down"
+              width={39}
+              height={39}
+            />
           </p>
         </div>
 
         <div className="text-[22px] px-[5px] afterdrop mt-[33px] !hidden md:block">
           <p className="font-semibold max-w-[830px] md:m-auto text-center font-myriadpro">
-            <img className="h-[16px] md:h-[24px] w-[16px] md:w-[24px] inline-block me-[5px]" src="https://resetdigestion.com/pages/er-vslfb-v2/charm_sound.png" />
-            <span className="text-[#d0190d] font-bold">IMPORTANT:&nbsp;</span>
+            <Image
+              className="h-[16px] md:h-[24px] w-[16px] md:w-[24px] inline-block me-[5px]"
+              src="https://resetdigestion.com/pages/er-vslfb-v2/charm_sound.png"
+              alt="Sound icon"
+              width={16}
+              height={16}
+              loading="lazy"
+              quality={50}
+            />
             <span className="align-middle text-[#000000]">Your video may take 10 seconds to load. Make sure your sound is on.</span>
-              <img src="https://emmarelief.com/cdn/shop/t/10/assets/greenarrowdown.png?v=90230465467182572741687505008" className="garrow afterdrop d-none m-auto mt-2 mt-sm-4" style={{ width: '39px' }} />
+            <Image
+              src="https://emmarelief.com/cdn/shop/t/10/assets/greenarrowdown.png?v=90230465467182572741687505008"
+              className="garrow afterdrop d-none m-auto mt-2 mt-sm-4"
+              style={{ width: '39px' }}
+              alt="Green arrow down"
+              width={39}
+              height={39}
+            />
           </p>
         </div>
 
         <div className="text-[16px] px-[5px] block md:hidden mobileimportant">
           <p className="font-semibold max-w-[776px] text-center font-myriadpro">
-            <img className="h-[16px] w-[16px] me-[5px] inline-block" src="https://resetdigestion.com/pages/er-vslfb-v2/charm_sound.png" />
-            <span className="text-[#d0190d] font-bold">IMPORTANT:&nbsp;</span>
+            <Image
+              className="h-[16px] w-[16px] me-[5px] inline-block"
+              src="https://resetdigestion.com/pages/er-vslfb-v2/charm_sound.png"
+              alt="Sound icon"
+              width={16}
+              height={16}
+              loading="lazy"
+              quality={50}
+            />
             <span className="align-middle text-[#000000]">Your video may take 10 seconds to load. Make sure your sound is on.</span>
-            <img src="https://emmarelief.com/cdn/shop/t/10/assets/greenarrowdown.png?v=90230465467182572741687505008" className="garrow afterdrop d-none m-auto mt-2 mt-sm-4" style={{ width: '39px' }} />
+            <Image
+              src="https://emmarelief.com/cdn/shop/t/10/assets/greenarrowdown.png?v=90230465467182572741687505008"
+              className="garrow afterdrop d-none m-auto mt-2 mt-sm-4"
+              style={{ width: '39px' }}
+              alt="Green arrow down"
+              width={39}
+              height={39}
+            />
           </p>
         </div>
       </div>
