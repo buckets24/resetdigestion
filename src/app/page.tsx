@@ -24,7 +24,7 @@ export default function Home() {
         src="https://gtmsvr.konsciousketo.com/gtm.js?id=GTM-56TX85F"
         strategy="worker"
       />
-      <Script id="google-analytics" strategy="afterInteractive">
+      <Script id="google-analytics" strategy="worker">
         {`
           window.dataLayer = window.dataLayer || [];
           function gtag() {
