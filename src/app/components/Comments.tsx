@@ -43,6 +43,7 @@ const Comment = ({ name, comment, imgSrc }: CommentProps) => {
           alt={name}
           fill
           className="aspect-square object-cover"
+          quality={50}
         />
       </div>
       <div className="flex flex-col gap-[7.7px] lg:gap-[12.6px]">

@@ -1,5 +1,5 @@
 import Script from 'next/script'
-import dynamic from 'next/dynamic'
+import Image from 'next/image'
 import { VSLProvider } from './context/VSLContext'
 import Headline from './components/Headline'
 import BeforeDrop from './components/ViewWrapper/BeforeDrop'
@@ -7,10 +7,7 @@ import Comments from './components/Comments'
 import { COMMENTS } from './config/comments.config'
 import Footer from './components/Footer'
 import { Suspense } from 'react'
-
-const Video = dynamic(() => import('./components/Video'), {
-  loading: () => <div>Loading...</div>,
-})
+import Video from './components/Video'
 
 export default function Home() {
   return (
@@ -53,7 +50,7 @@ export default function Home() {
                 smallPlayButton: false,
                 fullscreenButton: false
               }}
-          />
+            />
           </Suspense>
           <BeforeDrop>
             <div
@@ -69,22 +66,30 @@ export default function Home() {
                   <span className="text-[17px] text-[#00000080] font-[700]">As Seen On</span>
                   <div className="pt-4 row">
                     <div className="col-12">
-                      <img
-                        className="hidden w-full m-auto md:block"
+                      <Image
+                        className="hidden md:block"
                         src="https://resetdigestion.com/pages/er-vslfb-v2/asseenond.png?v=562"
-                        style={{ maxWidth: '772px' }}
+                        alt="As Seen On Desktop Media Logos"
+                        width={772}
+                        height={100}
+                        loading="lazy"
+                        quality={75}
                       />
-                      <img
-                        className="block w-full m-auto md:hidden"
+                      <Image
+                        className="block md:hidden"
                         src="https://resetdigestion.com/pages/er-vslfb-v2/asseenonm.png?v=562"
-                        style={{ maxWidth: '343px' }} />
+                        alt="As Seen On Mobile Media Logos"
+                        width={343}
+                        height={80}
+                        loading="lazy"
+                        quality={75}
+                      />
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-            </div>
           </BeforeDrop>
-          {/* Footer */}
           <Footer />
         </div>
       </VSLProvider>
