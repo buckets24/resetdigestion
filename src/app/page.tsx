@@ -18,29 +18,28 @@ export default function Home() {
       /> */}
       <Script
         src="https://www.googletagmanager.com/gtag/js?id=UA-122527750-1"
-        strategy="lazyOnload"
+        strategy="worker"
       />
       <Script
         src="https://gtmsvr.konsciousketo.com/gtm.js?id=GTM-56TX85F"
-        strategy="lazyOnload"
+        strategy="worker"
       />
-      <Script id="google-analytics" strategy="worker">
+      <Script id="google-analytics" strategy="beforeInteractive">
         {`
           window.dataLayer = window.dataLayer || [];
           function gtag() {
-            dataLayer.push(arguments);
+            window.dataLayer.push(arguments);
           }
           gtag('js', new Date());
-          //Second ID config
           gtag('config', 'AW-770742054');
           gtag('config', 'AW-11038484286');
         `}
       </Script>
       <Script
         src="https://polaris.truevaultcdn.com/static/polaris.js"
-        strategy="lazyOnload"
+        strategy="worker"
       />
-      <Script id="polaris-options" strategy="worker">
+      <Script id="polaris-options" strategy="beforeInteractive">
         {`
           window.polarisOptions = {
             GoogleAnalyticsTrackingId: "G-381562022",
