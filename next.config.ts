@@ -8,7 +8,10 @@ const nextConfig: NextConfig = {
         hostname: 'resetdigestion.com'
       }
     ]
-  }
+  },
+  experimental: {
+    nextScriptWorkers: true,
+  },
 }
 
 export default nextConfig
