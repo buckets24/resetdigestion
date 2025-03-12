@@ -8,10 +8,12 @@ import { COMMENTS } from './config/comments.config'
 import Footer from './components/Footer'
 import { Suspense } from 'react'
 import Video from './components/Video'
+import { Partytown } from '@builder.io/partytown/react';
 
 export default function Home() {
   return (
     <>
+      <Partytown debug={true} forward={['dataLayer.push']} />
       {/* <Script
         src="https://fast.wistia.com/assets/external/E-v1.js"
         strategy="worker"
