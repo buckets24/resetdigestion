@@ -44,7 +44,7 @@ export default function Home() {
       <Script
         id="polaris-options"
         src="https://polaris.truevaultcdn.com/static/polaris.js"
-        strategy="lazyOnload"
+        strategy="afterInteractive"
       >
         {`
           window && (window.polarisOptions = {
