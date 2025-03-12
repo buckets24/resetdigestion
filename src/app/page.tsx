@@ -36,6 +36,19 @@ export default function Home() {
           gtag('config', 'AW-11038484286');
         `}
       </Script>
+      <Script id="polaris-options" strategy="beforeInteractive">
+        {`
+          window.polarisOptions = {
+            GoogleAnalyticsTrackingId: "G-381562022",
+            enableConsentManager: true,
+            privacyCenterId: "2WDWRB6YE",
+          };
+        `}
+      </Script>
+      <Script
+        src="https://polaris.truevaultcdn.com/static/polaris.js"
+        strategy="beforeInteractive"
+      />
       <VSLProvider>
         <div className="bg-[#f7f6f4] w-full">
           <Headline />
