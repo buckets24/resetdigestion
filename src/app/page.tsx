@@ -18,13 +18,13 @@ export default function Home() {
       /> */}
       <Script
         src="https://www.googletagmanager.com/gtag/js?id=UA-122527750-1"
-        strategy="worker"
+        strategy="afterInteractive"
       />
       <Script
         src="https://gtmsvr.konsciousketo.com/gtm.js?id=GTM-56TX85F"
-        strategy="worker"
+        strategy="afterInteractive"
       />
-      <Script id="google-analytics" strategy="worker">
+      <Script id="google-analytics" strategy="afterInteractive">
         {`
           window.dataLayer = window.dataLayer || [];
           function gtag() {
@@ -38,9 +38,9 @@ export default function Home() {
       </Script>
       <Script
         src="https://polaris.truevaultcdn.com/static/polaris.js"
-        strategy="worker"
+        strategy="beforeInteractive"
       />
-      <Script id="polaris-options" strategy="worker">
+      <Script id="polaris-options" strategy="afterInteractive">
         {`
           window.polarisOptions = {
             GoogleAnalyticsTrackingId: "G-381562022",
