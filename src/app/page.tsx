@@ -19,12 +19,18 @@ export default function Home() {
       <Script
         src="https://www.googletagmanager.com/gtag/js?id=UA-122527750-1"
         strategy="worker"
+        type="text/partytown"
       />
       <Script
         src="https://gtmsvr.konsciousketo.com/gtm.js?id=GTM-56TX85F"
         strategy="worker"
+        type="text/partytown"
       />
-      <Script id="google-analytics" strategy="beforeInteractive">
+      <Script 
+        id="google-analytics" 
+        strategy="worker"
+        type="text/partytown"
+      >
         {`
           window.dataLayer = window.dataLayer || [];
           function gtag() {
@@ -38,8 +44,13 @@ export default function Home() {
       <Script
         src="https://polaris.truevaultcdn.com/static/polaris.js"
         strategy="worker"
+        type="text/partytown"
       />
-      <Script id="polaris-options" strategy="beforeInteractive">
+      <Script 
+        id="polaris-options" 
+        strategy="worker"
+        type="text/partytown"
+      >
         {`
           window.polarisOptions = {
             GoogleAnalyticsTrackingId: "G-381562022",
