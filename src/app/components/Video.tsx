@@ -37,7 +37,7 @@ interface WistiaVideo {
 
 // Components
 const VideoPlayer = ({ videoId }: { videoId: string }) => (
-  <div className="video-container">
+  <div className="wistia-container max-w-[87vw] m-auto">
     <div className="wistia_responsive_padding relative pt-[56.25%] pr-0 pb-0 pl-0">
       <div className="wistia_responsive_wrapper absolute top-0 left-0 h-full w-full">
         <div
@@ -117,7 +117,7 @@ const createDebounce = <T extends (...args: unknown[]) => void>(wait: number) =>
 
 // Main Component
 const Video = ({ videoId, timerSeconds, options }: VideoProps) => {
-  const { isMobile, isVideoPlaying, setButtonDrop, setIsVideoPlaying } =
+  const { isMobile, isVideoPlaying, buttonDrop, setButtonDrop, setIsVideoPlaying } =
     useVSL()
 
   const toggleFullscreenMode = useCallback((show: boolean) => {
@@ -243,16 +243,59 @@ const Video = ({ videoId, timerSeconds, options }: VideoProps) => {
   ])
 
   return (
-    <div
-      id="vidcont"
-      className="vidcont2 m-auto flex w-full max-w-[1085.8px] flex-col gap-[16px] bg-[#ffffff] px-[0] py-[0] shadow-2xl md:flex-row md:gap-[35px] md:px-[35px] md:pt-[45px] md:pb-[20px]"
-    >
-      <div className="block flex-grow-1">
-        <VideoPlayer videoId={videoId} />
-        <LoadingMessage />
+    <>
+      {buttonDrop ? (
+        <div
+          id="vidcont"
+          className="vidcont2 m-auto flex w-full max-w-[840px] flex-col gap-[16px] bg-[#ffffff] px-[0] py-[0] shadow-2xl md:flex-row md:gap-[35px]"
+        >
+          <div className="block flex-grow-1">
+            <VideoPlayer videoId={videoId} />
+          </div>
+        </div>
+      ): (
+        <div
+          id="vidcont"
+          className="vidcont2 m-auto flex w-full max-w-[1085.8px] flex-col gap-[16px] bg-[#ffffff] px-[0] py-[0] shadow-2xl md:flex-row md:gap-[35px] md:px-[35px] md:pt-[45px] md:pb-[20px]"
+      >
+        <div className="block flex-grow-1">
+          <VideoPlayer videoId={videoId} />
+          <LoadingMessage />
+        </div>
+        {!isVideoPlaying && <DoctorInfo />}
       </div>
-      {!isVideoPlaying && <DoctorInfo />}
-    </div>
+      )}
+      
+
+      <div className="bg-[#ffffff] md:bg-transparent m-auto maxwidth mb-sm-0 pb-0 pt-1 mt-[8px] md:mt-[16px] md:pb-[24px] md:pt-[16px] flowheight">
+        <div className="text-[20px] px-[5px] hidden showonplay">
+          <p className="font-semibold max-w-[776px] md:m-auto text-center font-myriadpro">
+            <img className="h-[16px] md:h-[24px] w-[16px] md:w-[24px] mt-[6px] md:mt-[4px] me-[5px]" src="https://resetdigestion.com/pages/er-vslfb-v2/charm_sound.png" />
+            <span className="text-[#d0190d] font-bold">IMPORTANT:&nbsp;</span>
+            <span className="align-middle">Your video may take 10 seconds to load. Make sure your sound is on.</span>
+            <img src="https://emmarelief.com/cdn/shop/t/10/assets/greenarrowdown.png?v=90230465467182572741687505008" className="garrow afterdrop d-none m-auto mt-2 mt-sm-4" style={{ width: '39px' }} />
+          </p>
+        </div>
+
+        <div className="text-[22px] px-[5px] afterdrop mt-[33px] !hidden md:block">
+          <p className="font-semibold max-w-[830px] md:m-auto text-center font-myriadpro">
+            <img className="h-[16px] md:h-[24px] w-[16px] md:w-[24px] inline-block me-[5px]" src="https://resetdigestion.com/pages/er-vslfb-v2/charm_sound.png" />
+            <span className="text-[#d0190d] font-bold">IMPORTANT:&nbsp;</span>
+            <span className="align-middle text-[#000000]">Your video may take 10 seconds to load. Make sure your sound is on.</span>
+              <img src="https://emmarelief.com/cdn/shop/t/10/assets/greenarrowdown.png?v=90230465467182572741687505008" className="garrow afterdrop d-none m-auto mt-2 mt-sm-4" style={{ width: '39px' }} />
+          </p>
+        </div>
+
+        <div className="text-[16px] px-[5px] block md:hidden mobileimportant">
+          <p className="font-semibold max-w-[776px] text-center font-myriadpro">
+            <img className="h-[16px] w-[16px] me-[5px] inline-block" src="https://resetdigestion.com/pages/er-vslfb-v2/charm_sound.png" />
+            <span className="text-[#d0190d] font-bold">IMPORTANT:&nbsp;</span>
+            <span className="align-middle text-[#000000]">Your video may take 10 seconds to load. Make sure your sound is on.</span>
+            <img src="https://emmarelief.com/cdn/shop/t/10/assets/greenarrowdown.png?v=90230465467182572741687505008" className="garrow afterdrop d-none m-auto mt-2 mt-sm-4" style={{ width: '39px' }} />
+          </p>
+        </div>
+      </div>
+    </>
   )
 }
 
